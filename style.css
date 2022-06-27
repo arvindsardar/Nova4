@@ -1,0 +1,881 @@
+/*
+Theme Name: Nova4 Master
+Author: Arvind Sardar
+Description: Base Theme
+License: GPLv2 License
+License URI: https://wordpress.org/about/gpl/
+Tags: scss, bootstrap, isotope, slickslide, git, blocks
+Text Domain: nova
+Version: 1
+*/
+
+@import './css/dev.css';
+
+/* ==================================== */
+/* ANCHOR Reset */
+/* Original Meyer reset */
+/* ==================================== */
+	:where(:not(html,iframe,canvas,img,svg,video):not(svg *,symbol *)){all:unset;display:revert}*,::after,::before{box-sizing:border-box}a,button{cursor:revert}menu,ol,ul{list-style:none}img{max-width:100%}table{border-collapse:collapse}textarea{white-space:revert}meter{-webkit-appearance:revert;appearance:revert}::placeholder{color:unset}:where([hidden]){display:none}:where([contenteditable]:not([contenteditable=false])){-moz-user-modify:read-write;-webkit-user-modify:read-write;overflow-wrap:break-word;-webkit-line-break:after-white-space}:where([draggable=true]){-webkit-user-drag:element}
+
+/* ==================================== */
+/* ANCHOR Setup */
+/* ==================================== */
+	html {
+		scroll-behavior: smooth;
+	}
+	body{
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		transition: all 0.5s ease;
+	}
+	hr,
+	hr.wp-block-separator.is-style-wide {
+		background-color: #ccc;
+		border: 0;
+		height: 1px;
+		margin-bottom: 1.5em;
+		margin-top: 1.5em;
+	}
+	ul, ol {
+		margin: 0;
+		padding-left: 15px;
+	}
+	ul {
+		list-style: disc;
+	}
+	ol {
+		list-style: decimal;
+	}
+	li > ul,
+	li > ol {
+		margin-bottom: 0;
+	}
+	img {
+		height: auto;
+		max-width: 100%;
+	}
+	table {
+		margin: 0 0 1.5em;
+		border-collapse: collapse;
+		border-spacing: 0;
+		font-size: 0.85em;
+	}
+	td, th{
+		padding: 10px;
+		border-bottom: solid 1px var(--gray30);
+	}
+	th{
+		background-color: var(--brand1);
+		color: white;
+		text-align: left;
+		font-weight: normal;
+	}
+
+/* ==================================== */
+/* ANCHOR Utilities */
+/* ==================================== */
+/* CLEARFIX */
+	.clearfix:before,.clearfix:after {content: " ";display: table;}
+	.clearfix:after {clear: both;}
+
+	/* --> desktop view */
+	@media only screen and (min-width: 992px){
+		.hide-desktop{
+			display: none !important;
+		}
+	}
+
+/* ALIGNMENTS */
+	.alignfull {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+	}
+	.alignwide {
+		width: calc(100% + 20vw);
+		position: relative;
+		left: -10vw;
+	}
+	.textcenter{
+		text-align: center;
+	}
+	.textleft{
+		text-align: left;
+	}
+	.textright{
+		text-align: right;
+	}
+
+/* CLEARFIX */
+	.clearfix:before,.clearfix:after {content: " ";display: table;}
+	.clearfix:after {clear: both;}
+
+/* VIDEO */
+	.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		padding-top: 30px; height: 0;
+		overflow: hidden;
+	}
+	.video-container iframe,
+	.video-container object,
+	.video-container embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+/* Margin Utilities */
+	.mt0{
+		margin-top: 0 !important;
+	}
+	.mb0{
+		margin-bottom: 0 !important;
+	}
+
+/* ==================================== */
+/* ANCHOR Animations */
+/* ==================================== */
+@keyframes slidedown50 {
+	0%   {top: -50px}
+	100% {top: 0;}
+}
+@keyframes slidedown82 {
+	0%   {top: -50px}
+	100% {top: 32px;}
+}
+@keyframes slideUp10 {
+	0%   {top: 90%}
+	100% {top: 100%;}
+}
+@keyframes fadeIn {
+	0%   {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+/* ==================================== */
+/* ANCHOR Colours */
+/* ==================================== */
+	:root {
+		--brand1: #989388;  /* colour1 */
+		--brand2: #92C83E;  /* colour2 */
+		--brand3: #707070;  /* colour3 */
+
+		--gray5:  #f0f4f5;
+		--gray10: #e8e8e8;
+		--gray20: #cac5c6;
+		--gray30: #afaaab;
+		--gray40: #948f91;
+		--gray50: #7a7677;
+		--gray60: #5e5e5e;
+		--gray70: #474747;
+		--gray80: #303030;
+		--gray90: #1b1b1b;
+
+		--light: var(--gray10);
+		--mid: var(--gray50);
+		--dark: var(--gray80);
+	}
+
+	.bg-brand1 {background-color: var(--brand1);}
+	.bg-brand2 {background-color: var(--brand2);}
+	.bg-brand3 {background-color: var(--brand3);}
+	.bg-dark {background-color: var(--dark);}
+	.bg-mid {background-color: var(--mid);}
+	.bg-light {background-color: var(--light);}
+
+	.txt-brand1 {color: var(--brand1);}
+	.txt-brand2 {color: var(--brand2);}
+	.txt-brand3 {color: var(--brand3);}
+	.txt-dark {color: var(--dark);}
+	.txt-mid {color: var(--mid);}
+	.txt-light {color: var(--light);}
+
+/* ==================================== */
+/* ANCHOR Fonts */
+/* ==================================== */
+	/* SEE https://google-webfonts-helper.herokuapp.com/fonts */
+	/* montserrat-200 - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: normal;
+		font-weight: 200;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-200italic - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: italic;
+		font-weight: 200;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-200italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-200italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-regular - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: normal;
+		font-weight: 400;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-italic - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: italic;
+		font-weight: 400;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-700 - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: normal;
+		font-weight: 700;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-700italic - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: italic;
+		font-weight: 700;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-900 - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: normal;
+		font-weight: 900;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+	/* montserrat-900italic - latin */
+	@font-face {
+		font-family: 'Montserrat';
+		font-style: italic;
+		font-weight: 900;
+		src: local(''),
+			url('fonts/montserrat/montserrat-v18-latin-900italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('fonts/montserrat/montserrat-v18-latin-900italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	}
+
+/* ANCHOR Typography */
+	html, body {
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: antialiased;
+		-o-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	body{
+		font-family: 'Montserrat', sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 1.5;
+		background-color: #fff;
+	}
+	h1,h2,h3,h4,h5,h6{
+		margin-top: 0;
+		margin-bottom: 20px;
+		line-height: 1.2;
+		font-weight: 700;
+	}
+	h1{
+		font-size: 55px;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	h2{
+		font-size: 32px;
+		font-weight: 700;
+	}
+	h3,
+	.like-h3{
+		font-size: 24px;
+		font-weight: 700;
+	}
+	h4{
+		font-size: 18px;
+	}
+	h5{
+		font-size: 17px;
+	}
+	h6{
+		font-size: 16px;
+	}
+	p{
+		margin-bottom: 12px;
+	}
+	big {
+		font-size: 125%;
+	}
+	small{
+		font-size: 80%;
+	}
+	a {
+		color: var(--brand2);
+		text-decoration: none;
+	}
+	a:hover{
+		color:var(--brand2);
+	}
+
+
+	@media only screen and (max-width: 1024px){
+		body{
+			font-size:16px
+		}
+		h1,
+		h1.entry-title{
+			font-size: 28px;
+		}
+		h2{
+			font-size: 24px;
+		}
+		h3{
+			font-size: 20px;
+		}
+		h4{
+			font-size: 18px;
+		}
+		h5{
+			font-size: 16px;
+		}
+		h6{
+			font-size: 16px;
+		}
+	}
+
+/* ==================================== */
+/* ANCHOR Buttons */
+/* ==================================== */
+	.button,
+	body .wp-block-button__link,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"] {
+		font-size: 16px;
+		font-weight: 600;
+		background-color: white;
+		border: 1px solid var(--brand2);
+		text-transform: uppercase;
+		display: inline-block;
+		line-height: 1;
+		padding: 16px 30px;
+		color: var(--brand2);
+		margin-bottom: 5px;
+		cursor: pointer;
+		border-radius: 3px;
+		transition: all 0.3s ease;
+	}
+	.button:hover,
+	body .wp-block-button__link:hover, /* gutenberg button*/
+	input[type="button"]:hover,
+	input[type="reset"]:hover,
+	input[type="submit"]:hover {
+		background-color: var(--brand2);
+		color: white;
+	}
+	.wire-button .wp-block-button__link,
+	.button.wire-button,
+	.gform_button{
+		background-color: transparent !important;
+		color: var(--brand2) !important;
+	}
+	.wire-button .wp-block-button__link:hover,
+	.button.wire-button:hover,
+	.gform_button:hover{
+		background-color: var(--brand2) !important;
+		color: white !important;
+	}
+	.wp-block-button__link:visited{
+		color: var(--brand2);
+	}
+
+/* ==================================== */
+/* ANCHOR ZONE: Header Area */
+/* ==================================== */
+	#zone__header{
+		background: var(--brand1) url(./images/bg-header.jpg) center/cover;
+	}
+
+	/* --> mobile view */
+	@media only screen and (max-width: 768px){
+		#zone__header{
+			padding: 40px 20px 0;
+		}
+	}
+
+	#section__brand{
+		padding: 30px 0;
+		background-color: var(--brand1);
+	}
+	#section__brand .wrap-inner{
+		display: flex;
+		align-items: center;
+	}
+	#section__brand .site-logo{
+		font-size: 0;
+		width: 120px;
+		display: block;
+		margin: 0 auto;
+	}
+	#section__nav{
+		/* border-top: 1px solid var(--brand2); */
+		background-color: var(--gray70);
+	}
+
+/* ==================================== */
+/* ANCHOR ZONE: Navigation */
+/* ==================================== */
+	/* -> HORIZONTAL MENU: Top Level */
+	ul.primary-menu{
+		display: flex;
+		margin: 0;
+		justify-content: center;
+	}
+	ul.primary-menu > li{
+		position: relative;
+		list-style: none;
+		/* overflow: hidden; */
+	}
+	ul.primary-menu > li > a{
+		padding: 12px;
+		color: white;
+		display: inline-block;
+		transition: all 0.4s ease;
+	}
+	ul.primary-menu > li:hover > a:after{
+		content:'';
+		position:absolute;
+		z-index:1;
+		background-color: var(--brand2);
+		width: 10px;
+		height: 10px;
+		top: 3px;
+		border-radius: 50%;
+		left:0;
+		right:0;
+		margin-left:auto;
+		margin-right:auto;
+		animation-name: fadeIn;
+		animation-duration: 0.8s;
+	}
+
+	/* -> HORIZONTAL MENU: Submenus */
+	ul.primary-menu li.menu-item-has-children{
+		position: relative;
+	}
+	ul.primary-menu ul.sub-menu{
+		background-color: var(--brand2);
+		position: absolute;
+		z-index: 999;
+		text-align: left;
+		padding:0;
+		width: 200px;
+		list-style: none;
+		top: 100%;
+		left: -999em;
+		transition: all 0.4s ease;
+	}
+	ul.primary-menu > li.menu-item-has-children:hover > ul.sub-menu{
+		animation-name: fadeIn;
+		animation-duration: 0.4s;
+		left: auto;
+	}
+	ul.primary-menu ul.sub-menu a {
+		width: 250px;
+		padding: 12px;
+		background-color: var(--brand2);
+		color: white;
+		display: block;
+	}
+	ul.primary-menu ul.sub-menu a:hover{
+		background-color: var(--brand1);
+	}
+
+/* ==================================== */
+/* ANCHOR MODULE: Sticky Nav */
+/* ==================================== */
+	/* --> desktop view */
+	@media only screen and (min-width: 1025px){
+		body.scrolled #section__nav{
+			animation-name: slidedown50;
+			animation-duration: 1s;
+			position: fixed;
+			width: 100%;
+			left: 0;
+			top: 0;
+			background-color: var(--brand1);
+			z-index: 100;
+			border-bottom: 1px solid var(--brand2);
+		}
+		body.scrolled.admin-bar #section__nav{
+			animation-name: slidedown82;
+			animation-duration: 1s;
+			top: 32px;
+		}
+	}
+
+/* ==================================== */
+/* ANCHOR MODULE: Mobile Nav */
+/* ==================================== */
+
+	/* Stop the page the scrolling */
+	body.offscreen-menu-active{overflow-y: hidden;}
+
+	/* toggle desktop & mobile menus */
+	@media only screen and (max-width: 1024px){ ul.primary-menu {display:none;} }
+	nav#id-menu--mobile {display:none;}
+
+
+	/* Hamburger */
+	@media only screen and (min-width: 1025px){#hamburger-button {display: none;}}
+
+
+	#hamburger-button {
+		width: 45px;
+		height: 45px;
+		cursor: pointer;
+		transition: all 0.4s ease;
+		position: fixed;
+		z-index: 101;
+		padding: 14px 7px;
+		top: 5px;
+		left: 5px;
+	}
+	body.admin-bar #hamburger-button{
+		top: 37px;
+	}
+	body.scrolled #hamburger-button {
+		background-color: #000;
+		border: 1px solid white;
+	}
+	#hamburger-button .bar{
+		position: relative;
+		height: 3px;
+		background-color: #fff;
+		transition: all 0.4s ease;
+		opacity: 1;
+		top: 0;
+	}
+	#hamburger-button .bar:not(:last-child){
+		margin-bottom: 4px;
+	}
+	#hamburger-button.active{
+		background-color: var(--brand2);
+		border-radius: 50%;
+	}
+	#hamburger-button.active .bar2{
+		opacity: 0;
+		transform: rotate(20deg);
+	}
+	#hamburger-button.active .bar1{
+		transform: rotate(45deg);
+		top: 7px;
+	}
+	#hamburger-button.active .bar3{
+		transform: rotate(-45deg);
+		top: -7px;
+	}
+
+	/* Mobile Menu */
+	.offscreen-menu-container{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: -50%;
+		width: 50%;
+		padding-top: 20px;
+		padding-left: 65px;
+		background-color: #000;
+		z-index: 12;
+		-webkit-transition: all 1s ease;
+		transition: all 1s ease;
+		overflow-y: scroll;
+	}
+	body.offscreen-menu-active .offscreen-menu-container{
+		right: 0;
+		width: 100%;
+	}
+	.offscreen-menu ul{
+		padding-left: 0;
+	}
+	ul.offscreen-menu > li{
+		border-bottom: 1px solid var(--brand2);
+		padding: 10px 0;
+	}
+	.offscreen-menu li{
+		list-style-type: none;
+		font-size: 20px;
+		transition: all 0.4s ease;
+		transition-delay: 0.4s;
+	}
+	.offscreen-menu > li{
+		line-height: 1.8;
+		position: relative;
+	}
+	.offscreen-menu li.menu-item a{
+		color: white;
+		padding:0;
+	}
+	.offscreen-menu li.menu-item a:hover{
+		color: #5A5A5A;
+	}
+	.offscreen-menu .showmore {
+		position: absolute;
+		left: -35px;
+		transition: all 0.3s ease;
+	}
+	.offscreen-menu .showmore:before{
+		content: "\f132";
+		font-family: 'dashicons';
+	}
+	.offscreen-menu .showmore.open:before{
+		content: "\f460";
+		font-family: 'dashicons';
+	}
+	.offscreen-menu ul.sub-menu{
+		padding-bottom: 20px;
+		/* display: none; */
+	}
+	.offscreen-menu ul.sub-menu a{
+		font-size: 15px;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: var(--gray50);
+	}
+
+/* ==================================== */
+/* ANCHOR ZONE: Content */
+/* ==================================== */
+	#zone__content{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+
+/* ==================================== */
+/* ANCHOR ZONE: Footer */
+/* ==================================== */
+	#zone__footer{
+		font-size: 14px;
+		background-color: #000;
+		padding: 40px 0;
+		color: white;
+	}
+
+	#zone__footer h2{
+		font-size: 16px;
+		text-transform: uppercase;
+		margin-bottom: 8px;
+		margin-top: 0;
+	}
+	#zone__footer nav{
+		padding: 15px;
+		background-color: rgba(0, 0, 0, 0.5);;
+	}
+	#zone__footer nav ul{
+		list-style: none;
+	}
+	#zone__footer nav > ul > li{
+		border-top: 3px solid var(--brand2);
+	}
+	#zone__footer nav a{
+		color: #fff;
+		display: block;
+		font-weight: 600;
+		font-size: 16px;
+		padding: 12px 0;
+	}
+	#zone__footer nav ul.sub-menu a{
+		padding: 6px 0;
+	}
+	#zone__footer nav ul ul{
+		padding-left: 15px;
+	}
+	#zone__footer #site-info{
+		padding: 15px;
+		margin-top: 30px;
+		border-top: 1px solid var(--gray20);
+	}
+	#zone__footer #site-info a{
+		display: inline-block;
+		color: white;
+		margin: 0 8px;
+	}
+	a#back-to-top{
+		display: block;
+		position: fixed;
+		bottom: 18px;
+		right: 18px;
+		background-color: black;
+		outline: 1px solid white;
+		color: white;
+		z-index: 100;
+		padding:6px 12px;
+	}
+
+/* ==================================== */
+/* ANCHOR MODULE: Uncovering Footer */
+/* ==================================== */
+	/* --> desktop view */
+	@media only screen and (min-width: 1025px){
+		#zone__content{
+			position: relative;
+			background-color: #fff;
+			margin-bottom: 215px;
+		}
+		#zone__footer{
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+
+/* ==================================== */
+/* ANCHOR PAGE: Blogs */
+/* ==================================== */
+	body.blog .post-list .item{
+		margin-bottom: 30px;
+	}
+	body.blog .post-list .item .inner{
+		padding: 0 30px 50px 0;
+		position: relative;
+		height: 100%;
+	}
+	body.blog .post-list .item .inner .post-link{
+		position: absolute;
+		bottom: 0;
+	}
+
+/* ==================================== */
+/* ANCHOR PAGE: Single Posts */
+/* ==================================== */
+	body.single-post header.entry-header{
+		margin-bottom: 60px;
+	}
+	body.single-post h1.entry-title{
+		margin-bottom: 0;
+	}
+	body.single-post .entry-meta{
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+	body.single-post #main-content .wp-post-image{
+		height: 30vh;
+		object-fit: cover;
+		margin-bottom: 30px;
+	}
+	body.single-post .nav-links{
+		border-top: solid 1px var(--gray10);
+		margin-top: 30px;
+		padding-top: 30px;
+		display: flex;
+		justify-content: space-between;
+	}
+	body.single-post .nav-links .previous-post,
+	body.single-post .nav-links .next-post{
+		font-weight: bold;
+		display: block;
+	}
+
+/* ==================================== */
+/* ANCHOR PAGE: Archives */
+/* ==================================== */
+	body.archive article.post{
+		margin-bottom: 60px;
+	}
+	body.archive h2.entry-title{
+		font-size: 26px;
+		line-height: 1.2;
+		font-weight: 400;
+		margin-bottom: 0;
+	}
+	body.archive .entry-meta{
+		font-size: 13px;
+		margin-bottom: 20px;
+	}
+
+/* ==================================== */
+/* ANCHOR MODULE: Pagination */
+/* ==================================== */
+	.pagination{
+		padding: 30px 0;
+		text-align: right;
+	}
+	.pagination .page-numbers{
+		padding: 10px 16px;
+		border-radius: 4px;
+		border: 1px solid #fff;
+		background-color:#009ddc;
+		color: white;
+	}
+	.pagination .page-numbers:hover{
+		background-color:#007dca;
+	}
+	.pagination .page-numbers.current{
+		background-color:transparent;
+		color: #b0b0b0;
+		border-color: #b0b0b0;
+	}
+
+/* ==================================== */
+/* ANCHOR MODULE: Cards */
+/* ==================================== */
+	.cards .item-wrap{
+		box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+		border-radius: 10px;
+		padding-bottom: 25px;
+		padding-top: 25px;
+		align-self: s;
+	}
+
+/* ==================================== */
+/* ANCHOR PLUGIN: Woocommerce */
+/* ==================================== */
+	.woocommerce-billing-fields .form-row,
+	.woocommerce-shipping-fields .form-row,
+	.woocommerce form .form-row {
+		display: block;
+	}
+	.woocommerce .col2-set .col-1,
+	.woocommerce-page .col2-set .col-1,
+	.woocommerce .col2-set .col-2,
+	.woocommerce-page .col2-set .col-2 {
+		max-width: unset;
+	}
+	.woocommerce ul.products li.product,
+	.woocommerce-page ul.products li.product {
+		text-align: center;
+		padding:20px;
+	}
+	.woocommerce #respond input#submit.alt,
+	.woocommerce a.button.alt,
+	.woocommerce button.button.alt,
+	.woocommerce input.button.alt {
+		background-color: var(--brand2);
+		border: solid 1px var(--brand2);
+	}
+	.woocommerce #respond input#submit.alt:hover,
+	.woocommerce a.button.alt:hover,
+	.woocommerce button.button.alt:hover,
+	.woocommerce input.button.alt:hover {
+		background-color: white;
+		color: var(--brand2);
+	}
+
+/* ==================================== */
+/* ANCHOR Overrides  */
+/* ==================================== */

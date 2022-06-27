@@ -1,0 +1,1066 @@
+/* Mostly built for Gravity Forms
+--------------------------------------------*/
+    li.gfield:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+/* !! Hidden & Validation Forms */
+    li.gform_validation_container, li.gform_hidden {
+        position: absolute;
+        left: -999em;
+        visibility: hidden;
+    }
+    .hidden_label>label {
+        position: absolute;
+        left: -999em;
+    }
+
+
+
+
+/* !! Form Elements */
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="range"],
+    input[type="date"],
+    input[type="month"],
+    input[type="week"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="color"],
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        outline: none;
+        border: 1px solid var(--gray20);
+        border-bottom: 1px solid var(--gray30);
+        background: var(--gray5);
+        border-radius: 4px;
+        padding: 15px 10px;
+        color: var(--gray70);
+        font-size: 14px;
+        transition: all 0.4s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="url"]:focus,
+    input[type="password"]:focus,
+    input[type="search"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    input[type="range"]:focus,
+    input[type="date"]:focus,
+    input[type="month"]:focus,
+    input[type="week"]:focus,
+    input[type="time"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="color"]:focus,
+    textarea:focus {
+        color: var(--gray50);
+    }
+    select {
+        border: 1px solid #ccc;
+    }
+    textarea {
+        width: 100%;
+    }
+    ::-webkit-input-placeholder { /* Edge */
+        color: var(--gray50);
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size:12px;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: var(--gray50);
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size:12px;
+    }
+    ::placeholder {
+        color: var(--gray50);
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size:12px;
+    }
+
+    .select2-container .select2-choice {
+        background: #efefef !important;
+        border: none !important;
+        padding: .75em 1em !important;
+    }
+    .select2-display-none {
+        padding-top: .5em !important;
+    }
+
+    .gform_wrapper label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    .gform_wrapper .ginput_container_radio label,
+    .gform_wrapper .ginput_container_checkbox label{
+        display: inline-block;
+    }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #efefef;
+        border: none;
+        border-radius: 3px;
+        padding: 1em;
+        font-size: 1em;
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    option {
+        padding: .25em .5em;
+    }
+    select[multiple] {
+        width: auto;
+    }
+    input[type="checkbox"], input[type="radio"] {
+        display: inline-block;
+        padding-top: 0;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        position: relative;
+        top: 3px;
+    }
+    input[type="search"] {
+        appearance: none;
+    }
+    textarea {
+        min-height: 200px;
+        width: 100%;
+    }
+    form.simple-search input {
+        width: 100%;
+        padding-right: 40px;
+    }
+    .search form.simple-search {
+        width: 60%;
+    }
+    form.simple-search button {
+        top: 5px;
+        right: 5px;
+        border: 0;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+    }
+    form.simple-search button:hover, form.simple-search button:active {
+        box-shadow: none;
+    }
+    form.simple-search button img {
+        width: 2em;
+    }
+
+    .select2-container .select2-choice {
+        padding: 1.05em !important;
+    }
+
+/* !! Gravity Forms Styling, v .1 */
+
+/* !! Basics */
+    .gform_wrapper ul {
+        padding: 0;
+        list-style: none;
+    }
+    .gform_wrapper li.gfield {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .gform_wrapper .small, .small+.ginput_counter, .small+.chosen-container-multi {
+        width: 20% !important;
+        max-width: 100%;
+    }
+    .gform_wrapper .medium, .medium+.ginput_counter, .medium+.chosen-container-multi {
+        width: 50% !important;
+        max-width: 100%;
+    }
+    .gform_wrapper .large, .large+.ginput_counter, .large+.chosen-container-multi {
+        width: 100% !important;
+        max-width: 100%;
+    }
+    @media (max-width:767px) {
+        .gform_wrapper .small, .small+.ginput_counter, .small+.chosen-container-multi {
+            width: 40% !important;
+            max-width: 100%;
+        }
+        .gform_wrapper .medium, .medium+.ginput_counter, .medium+.chosen-container-multi {
+            width: 75% !important;
+            max-width: 100%;
+        }
+        .gform_wrapper .large, .large+.ginput_counter, .large+.chosen-container-multi {
+            width: 100% !important;
+            max-width: 100%;
+        }
+    }
+    .ginput_counter {
+        padding-top: .25em;
+    }
+    .gfield_required {
+        padding: 0 .2em;
+    }
+    .gfield_description {
+        padding: .25em .25em 0 .25em;
+        clear: both;
+    }
+    .field_description_above .gfield_description {
+        padding: .75em .25em;
+    }
+    .field_sublabel_above.field_description_above .gfield_description+.clear-multi label {
+        padding-top: 0;
+    }
+    @media (max-width:767px) {
+        li.gfield {
+            max-width: 100%;
+            overflow-x: scroll;
+        }
+    }
+
+/* !! Typography */
+    .gfield_total label {
+        font-size: 1.75em;
+    }
+    .ginput_container_total, h3.gf_progressbar_title, .ginput_container_post_title {
+        font-size: 1.5em;
+    }
+    h3.gf_progressbar_title {
+        font-size: 1em;
+    }
+    .ginput_counter, .ginput_complex span label, .ginput_container_fileupload .screen-reader-text, .instruction, .ui-datepicker-title select {
+        font-size: .9em;
+    }
+    .gfield_description, .gfield .instruction {
+        font-style: italic;
+    }
+    .gfield_label, .gfield_required, .ginput_product_price_label, .ginput_product_price, input:checked+label, td.ui-datepicker-today a, .gfield_description.validation_message, .ginput_shipping_price, h3.gf_progressbar_title {
+        font-weight: bold;
+    }
+    .ginput_counter {
+        text-align: right;
+    }
+    .ginput_counter {
+        line-height: 1;
+    }
+
+/* !! Colors */
+    .gfield_required, .warningTextareaInfo, ul.chosen-results li.no-results, .ginput_container_fileupload span.screen-reader-text+div {
+        color: #bf0421;
+    }
+
+/* !! Maroon */
+    .ginput_product_price_label, .ginput_product_price, .ginput_container_total {
+        color: green;
+    }
+    select[multiple]+.chosen-container li.result-selected, td.ui-datepicker-current-day a.ui-state-active, ul.chosen-results li.active-result.result-selected {
+        background: black;
+        color: white;
+    }
+
+/* !! Radio & Checkboxes */
+    .gfield_checkbox li label, .gfield_radio li label {
+        padding-top: 0;
+        position: relative;
+    }
+    .gfield_radio input[type="radio"]+input[type="text"] {
+        display: inline-block;
+        width: 10em;
+        top: -.75em;
+        position: relative;
+        margin-left: .25em;
+    }
+
+/* !! Selects */
+    .ginput_container_select {
+        position: relative;
+        display: inline;
+    }
+    .ginput_container_select.chosen-after {
+        display: inline-block;
+    }
+    .ginput_container_select.chosen-after:after {
+        top: 1.3em;
+    }
+    .ginput_container_select:after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    .ginput_container_select:after {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        top: .3em;
+        right: .75em;
+        border-top: 8px solid black;
+        opacity: 0.5;
+    }
+    .ginput_container_select select {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .chosen-container {
+        position: relative;
+    }
+    li.gfield a.chosen-single span, li.gfield .chosen-container-multi .search-choice span {
+        color: black;
+        position: absolute;
+        display: block;
+        left: 1em;
+        top: .85em;
+    }
+    ul.chosen-results {
+        display: none;
+        border: 3px solid #efefef;
+        background: white;
+        top: -.3em;
+        position: relative;
+        padding: 0 !important;
+        max-height: 11.75em;
+        overflow: scroll;
+    }
+    .chosen-container-multi ul.chosen-results {
+        top: -1em;
+        left: 1em;
+        width: 15em;
+        max-width: 90%;
+    }
+    ul.chosen-results li.active-result {
+        padding: .5em .75em;
+    }
+    ul.chosen-results li.active-result:hover {
+        background: #efefef;
+    }
+    select[multiple]+.chosen-container li.result-selected {
+        padding-left: .75em;
+    }
+    select[multiple]+.chosen-container.chosen-container-active li.search-field {
+        display: none;
+    }
+    ul.chosen-results li.active-result.result-selected.gf_placeholder {
+        background: transparent;
+        color: black;
+    }
+    ul.chosen-results li.no-results {
+        padding: .5em .75em;
+        font-style: italic;
+    }
+    .chosen-container-active ul.chosen-results {
+        display: block;
+    }
+    .chosen-container-active a.chosen-single span {
+        visibility: hidden;
+    }
+    .chosen-container-multi .search-choice span {
+        top: 2em;
+        left: 2em;
+    }
+    .chosen-container-multi li.search-choice {
+        position: relative;
+        top: 2.5em;
+    }
+    .chosen-container-multi .search-field input {
+        overflow-x: hidden;
+    }
+    .ginput_container_multiselect select {
+        height: 8em;
+        overflow: scroll;
+    }
+    .ginput_container_multiselect select.small {
+        height: 6.5em;
+    }
+    .ginput_container_multiselect select.large {
+        height: 12em;
+    }
+    .small+.chosen-container-multi .search-field input, .medium+.chosen-container-multi .search-field input, .large+.chosen-container-multi .search-field input {
+        width: 100%;
+    }
+    select[multiple]+.chosen-container li.search-field input {
+        width: 100% !important;
+    }
+    select[multiple]+.chosen-container-multi ul.chosen-choices li.search-choice {
+        position: relative;
+        left: 90%;
+        padding-bottom: 1em;
+    }
+
+/* !! HTML Field & Sections */
+    .gfield_html_formatted {
+        margin-bottom: 1em;
+    }
+    li.gsection {
+        margin-top: 2em;
+    }
+
+/* !! Name Fields */
+    .ginput_complex span label {
+        padding: .25em 0 .75em .25em;
+    }
+    span.name_first, span.name_last, span.name_middle, span.name_prefix, span.name_suffix {
+        width: 49%;
+        float: left;
+    }
+    span.name_first {
+        margin-right: 1%;
+    }
+    span.name_last {
+        margin-left: 1%;
+    }
+    .no_prefix.no_middle_name.no_last_name.no_suffix span.name_first label, .no_prefix.no_middle_name.no_first_name.no_suffix span.name_last label {
+        display: none;
+    }
+    .no_prefix.no_middle_name.no_first_name.no_suffix span.name_last {
+        margin-left: 0;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_first {
+        width: 40%;
+        margin-right: 1%;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_middle {
+        width: 18%;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_last {
+        width: 40%;
+        margin-left: 1%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_prefix {
+        width: 10%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_first {
+        width: 39%;
+        margin-right: 1%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_middle {
+        width: 10%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_last {
+        width: 39%;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_first {
+        width: 38.5%;
+        margin-right: 1%;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_middle {
+        width: 10%;
+        margin-right: 1%;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_last {
+        width: 38.5%;
+        margin-left: 0;
+    }
+    .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_suffix {
+        width: 10%;
+        margin-left: 1%;
+    }
+    .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_prefix {
+        width: 10%;
+    }
+    .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_first {
+        width: 39%;
+        margin-right: 1%;
+    }
+    .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_last {
+        width: 39%;
+        margin-left: 0;
+    }
+    .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_suffix {
+        width: 10%;
+        margin-left: 1%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_prefix {
+        width: 10%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_first {
+        width: 33.5%;
+        margin-right: 1%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_middle {
+        width: 10%;
+        margin-right: 1%;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_last {
+        width: 33.5%;
+        margin-left: 0;
+    }
+    .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_suffix {
+        width: 10%;
+        margin-left: 1%;
+    }
+    @media (max-width:767px) {
+        .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_prefix {
+            width: 20%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_first {
+            width: 40%;
+            margin-right: 1%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_middle {
+            clear: left;
+            width: 20%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.no_suffix span.name_last {
+            width: 40%;
+        }
+        .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_first {
+            width: 40%;
+            margin-right: 1%;
+        }
+        .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_middle {
+            width: 20%;
+            margin-right: 1%;
+        }
+        .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_last {
+            clear: left;
+            width: 40%;
+            margin-left: 0;
+        }
+        .no_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_suffix {
+            width: 20%;
+            margin-left: 1%;
+        }
+        .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_prefix {
+            width: 20%;
+        }
+        .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_first {
+            width: 40%;
+            margin-right: 1%;
+        }
+        .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_last {
+            width: 40%;
+            clear: left;
+            margin-left: 0;
+        }
+        .has_prefix.has_first_name.no_middle_name.has_last_name.has_suffix span.name_suffix {
+            width: 20%;
+            margin-left: 1%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_prefix {
+            width: 20%;
+            margin-right: 1%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_first {
+            width: 40%;
+            margin-right: 1%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_middle {
+            clear: left;
+            width: 20%;
+            margin-right: 1%;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_last {
+            width: 40%;
+            margin-left: 0;
+        }
+        .has_prefix.has_first_name.has_middle_name.has_last_name.has_suffix span.name_suffix {
+            width: 20%;
+            margin-left: 1%;
+        }
+    }
+    .field_sublabel_above span label {
+        padding-bottom: 0;
+    }
+
+/* !! Calendar */
+    .ui-datepicker .ui-icon {
+        position: relative;
+    }
+    a.ui-datepicker-prev, a.ui-datepicker-next {
+        float: left;
+        width: 1em;
+        height: 1em;
+        margin-top: .45em;
+    }
+    a.ui-datepicker-next {
+        float: right;
+    }
+    #ui-datepicker-div {
+        background: white;
+        padding: .5em;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+    table.ui-datepicker-calendar th, table.ui-datepicker-calendar td {
+        padding: .25em;
+    }
+    a.ui-datepicker-next.ui-corner-all {
+        float: right;
+    }
+    .ui-datepicker-title {
+        text-align: center;
+    }
+    .ui-datepicker-title select {
+        padding: .5em 1em;
+        margin: 0 .15em;
+    }
+    td.ui-datepicker-week-end {
+        background: #efefef;
+    }
+    table.ui-datepicker-calendar td {
+        padding: .25em;
+        text-align: center;
+    }
+    select[multiple]+.chosen-container li.result-selected {
+        padding-left: .75em;
+        background: black;
+        color: white;
+    }
+    td.ui-datepicker-current-day a.ui-state-active {
+        display: block;
+        border-radius: 50%;
+        width: 1.5em;
+    }
+    input.datepicker_with_icon+img {
+        width: 1.5em;
+        position: relative;
+        left: .5em;
+        top: .25em;
+    }
+
+/* !! Time */
+    .ginput_container_time {
+        float: left;
+    }
+    .ginput_container_time i {
+        font-style: normal;
+        display: inline-block;
+        padding: 0 .25em 0 0;
+    }
+    .gfield_time_ampm {
+        margin-left: 1%;
+    }
+
+/* !! Address */
+    span.address_city, span.address_state, span.address_zip {
+        float: left;
+        width: 32%;
+        margin-right: 1%;
+    }
+    span.address_city {
+        width: 34%;
+    }
+    span.address_zip {
+        margin-right: 0;
+    }
+    .address_state select {
+        width: 100%;
+    }
+    @media (max-width:767px) {
+        span.address_city {
+            width: 100%;
+            float: none;
+        }
+        span.address_city input {
+            width: 80%;
+        }
+        span.address_state, span.address_zip {
+            width: 49%;
+        }
+    }
+
+
+/* !! File Upload */
+    .ginput_container_fileupload {
+        background: #efefef;
+        padding: .75em;
+        border-radius: 3px;
+    }
+    .ginput_container_fileupload .screen-reader-text {
+        display: inline;
+    }
+    .ginput_container_fileupload>div:first-of-type {
+        text-align: center;
+        padding: 2em 0;
+        border: 3px dashed #ddd;
+    }
+    span.gform_drop_instructions {
+        display: block;
+        margin: 0 0 1em 0;
+    }
+    .ginput_container_fileupload>div+span.screen-reader-text {
+        display: block;
+        text-align: center;
+        margin: 1em 0 0 0;
+    }
+    .ginput_container_fileupload span.screen-reader-text+div li {
+        padding: .25em 0 0 0;
+    }
+    @media (max-width:767px) {
+        .ginput_container_fileupload .screen-reader-text {
+            display: block;
+            font-size: .7em;
+            padding: 1em .75em;
+        }
+        span.gform_drop_instructions {
+            display: none;
+        }
+    }
+
+/* !! List */
+    td.gfield_list_icons img {
+        position: relative;
+        top: 1em;
+        opacity: 1 !important;
+    }
+    .field_description_above .gfield_description+.ginput_container_list {
+        margin-top: -1.5em;
+    }
+
+/* !! Product Fields */
+    .ginput_container_singleproduct .ginput_product_price_label {
+        padding-left: 1em;
+    }
+    span.ginput_quantity_label {
+        margin-left: 1em;
+    }
+    .instruction {
+        padding: .5em .35em;
+    }
+    .ginput_shipping_price {
+        padding: 1em;
+        display: block;
+    }
+    .ginput_container_total {
+        display: block;
+        margin-left: .35em;
+    }
+
+/* !! Error & Validation Messages */
+    .validation_error, .gform_validation_error li.gfield_error {
+        background: #bf0421;
+        color: white;
+        padding: 0 1em 1em 1em;
+        margin: 1em 0;
+        border-radius: 3px;
+    }
+    .validation_error {
+        padding-top: 1em;
+    }
+    .gfield_description.validation_message {
+        position: absolute;
+        top: -1.25em;
+        left: 1em;
+        background: black;
+        border-radius: 3px;
+        padding: .25em .5em;
+    }
+    .gfield_description.validation_message:before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        bottom: -5px;
+        left: 1em;
+        border-top: 5px solid black;
+    }
+    .gform_wrapper li.gfield_error {
+        position: relative;
+        margin-top: 3em;
+    }
+    .gfield_error .ginput_container_select:after {
+        display: none;
+    }
+    .gfield_error .warningTextareaInfo {
+        color: white;
+    }
+    .gfield_error .ginput_container_fileupload {
+        color: black;
+    }
+    .gfield_error img.add_list_item {
+        background-color: white;
+        border-radius: 50%;
+    }
+
+
+/* !! Progress Bars & Paging */
+    .gf_progressbar {
+        position: relative;
+        border-top: 5px solid #efefef;
+    }
+    .gf_progressbar_percentage {
+        color: white;
+        border-top: 5px solid #4480c3;
+        position: relative;
+        top: -5px;
+        text-align: right;
+    }
+    .gf_progressbar_percentage span {
+        background: black;
+        display: inline-block;
+        width: 2.5em;
+        height: 2.5em;
+        line-height: 2.75;
+        border-radius: 3px;
+        border-top-right-radius: 0;
+        font-size: .9em;
+        margin-top: .25em;
+        position: relative;
+        text-align: center;
+    }
+    .gf_progressbar_percentage.percentbar_0 span {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 0;
+    }
+    .gf_progressbar_percentage span:after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-left: 5px solid transparent;
+        border-right: 0 solid transparent;
+        top: -5px;
+        right: 0;
+        border-bottom: 5px solid black;
+    }
+    .gf_progressbar_percentage.percentbar_0 span:after {
+        right: auto;
+        left: 0;
+        border-right: 5px solid transparent;
+        border-left: 0;
+    }
+    .gf_progressbar_percentage.percentbar_red {
+        border-color: #bf0421;
+    }
+    .gf_progressbar_percentage.percentbar_green {
+        border-color: green;
+    }
+    .gf_progressbar_percentage.percentbar_gray {
+        border-color: #666;
+    }
+    .gf_progressbar_percentage.percentbar_orange {
+        border-color: #e8641b;
+    }
+    .gf_progressbar_percentage.percentbar_custom {
+        border-color: transparent;
+    }
+    .gf_progressbar_wrapper+.gform_body .gform_page_footer {
+        padding-top: 2em;
+    }
+    div.gform_confirmation_message {
+        background: green;
+        color: white;
+        padding: 1em;
+        margin: 1em 0;
+        border-radius: 3px;
+    }
+    body img.gform_ajax_spinner {
+        display: block;
+        margin: 1em auto;
+    }
+    .gf_page_steps {
+        display: table;
+        width: 100%;
+    }
+    .gf_page_steps>div {
+        padding: .25em;
+        display: table-cell;
+        color: white;
+        background: black;
+        vertical-align: top;
+        font-weight: bold;
+    }
+    .gf_page_steps>div.gf_step_pending {
+        background: #efefef;
+        color: #666;
+    }
+    .gf_step_clear {
+        display: none !important;
+    }
+    span.gf_step_number {
+        background: white;
+        color: black;
+        display: inline-block;
+        width: 2em;
+        text-align: center;
+        border-radius: 50%;
+        line-height: 2;
+    }
+    @media (max-width:767px) {
+        .gf_step {
+            text-align: center;
+        }
+        .gf_step span {
+            clear: both;
+            display: block;
+            margin: 0 auto;
+        }
+        span.gf_step_number {
+            margin-top: .5em;
+        }
+        span.gf_step_label {
+            margin-top: -1em;
+        }
+    }
+
+/* !! Credit Card */
+    .ginput_container_creditcard {
+        background: #efefef;
+        padding: 2em;
+        border-radius: 5px;
+    }
+    .ginput_container_creditcard input, .ginput_container_creditcard select {
+        background: white;
+    }
+    .gform_card_icon_container div {
+        font-size: 2em;
+        float: left;
+        text-indent: -99em;
+        position: relative;
+        display: block;
+    }
+    .gform_card_icon_container div:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-indent: 0;
+    }
+    .gform_card_icon_container div {
+        font-size: 2em;
+        float: left;
+        text-indent: -99em;
+        position: relative;
+        display: block;
+        width: 1.5em;
+        color: #666;
+    }
+    .ginput_card_security_code_icon:before {
+        content: "\e911";
+    }
+    .icon-cc-paypal:before {
+        content: "\e913";
+    }
+    .gform_card_icon_amex:before {
+        content: "\e914";
+    }
+    .gform_card_icon_discover:before {
+        content: "\e915";
+    }
+    .gform_card_icon_mastercard:before {
+        content: "\e916";
+    }
+    .gform_card_icon_visa:before {
+        content: "\e917";
+    }
+    .ginput_cardinfo_left, .ginput_cardinfo_right {
+        float: left;
+    }
+    .ginput_cardinfo_right {
+        margin-left: 1em;
+    }
+    span.ginput_card_security_code_icon {
+        font-size: 1.5em;
+        float: left;
+        color: #666;
+    }
+    .gfield_creditcard_warning_message {
+        background: #bf0421;
+        color: white;
+        padding: 1em .75em;
+        border-radius: 3px;
+    }
+    .gfield_error .ginput_container_creditcard label {
+        color: black;
+    }
+    .ginput_container_creditcard .ginput_full {
+        clear: both;
+        display: block;
+    }
+    .field_sublabel_above .ginput_container_creditcard .ginput_full:first-of-type {
+        margin-bottom: 2em;
+    }
+    @media (max-width:767px) {
+        .ginput_container_creditcard {
+            padding: 1em;
+        }
+        .ginput_cardinfo_right {
+            width: 40%;
+        }
+    }
+
+/* !! Columns
+--------------------------------------------*/
+    ul.gform_fields{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    ul.gform_fields li.gfield{
+        width: 100%;
+    }
+    ul.gform_fields li.gfield.gf-half{
+        width: 49%;
+    }
+    ul.gform_fields li.gfield.gf-third{
+        width: 32%;
+    }
+    ul.gform_fields li.gfield.gf-fourth{
+        width: 24%;
+    }
+
+    /* 2 Column Lists */
+    li.list-2col .gfield_radio,
+    li.list-2col .gfield_checkbox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    li.list-2col .gfield_radio > li,
+    li.list-2col .gfield_checkbox > li{
+        width: 49%;
+    }
+
+    /* 3 Column Lists */
+    li.list-3col .gfield_radio,
+    li.list-3col .gfield_checkbox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    li.list-3col .gfield_radio > li,
+    li.list-3col .gfield_checkbox > li{
+        width: 32%;
+    }
+
+    /* 4 Column Lists */
+    li.list-4col .gfield_radio,
+    li.list-4col .gfield_checkbox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    li.list-4col .gfield_radio > li,
+    li.list-4col .gfield_checkbox > li{
+        width: 24%;
+    }
+
+
+	/* --> mobile view */
+	@media only screen and (max-width: 768px){
+        ul.gform_fields li.gfield.gf-half,
+        ul.gform_fields li.gfield.gf-third,
+        ul.gform_fields li.gfield.gf-fourth,
+        li.list-2col .gfield_radio > li,
+        li.list-2col .gfield_checkbox > li,
+        li.list-3col .gfield_radio > li,
+        li.list-3col .gfield_checkbox > li,
+        li.list-4col .gfield_radio > li,
+        li.list-4col .gfield_checkbox > li{
+            width: 100%;
+        }
+	}

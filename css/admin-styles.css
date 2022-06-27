@@ -1,0 +1,68 @@
+/*pencil icon*/
+#adminmenu #menu-pages div.wp-menu-image::before,
+#adminmenu #menu-media div.wp-menu-image::before,
+#adminmenu #menu-posts div.wp-menu-image::before,
+#adminmenu #menu-comments div.wp-menu-image::before,
+#adminmenu #toplevel_page_gf_edit_forms div.wp-menu-image::before /*GRAVITY FORMS*/ {
+    content: '\f464' !important;
+}
+
+/*gear icon*/
+#adminmenu #menu-appearance div.wp-menu-image::before,
+#adminmenu #menu-plugins div.wp-menu-image::before,
+#adminmenu #menu-tools div.wp-menu-image::before,
+#adminmenu #menu-users div.wp-menu-image::before,
+#adminmenu #toplevel_page_snippets div.wp-menu-image::before, /*SNIPPETS*/
+#adminmenu #menu-settings div.wp-menu-image::before{
+	content: '\f111' !important;
+}
+
+/*plugin icon*/
+#adminmenu #toplevel_page_edit-post_type-acf-field-group div.wp-menu-image::before, /*ACF*/
+#adminmenu #toplevel_page_duplicator div.wp-menu-image.svg::before, /*DUPLICATOR*/
+#adminmenu #toplevel_page_font-awesome div.wp-menu-image.svg::before, /*FONTAWESOME*/
+#adminmenu #toplevel_page_backwpup div.wp-menu-image::before, /*BACKWPUP*/
+#adminmenu #toplevel_page_wp_stream div.wp-menu-image::before, /*STREAM*/
+#adminmenu #menu-posts-sa_slider div.wp-menu-image::before, /*SA SLIDER*/
+#adminmenu #menu-posts-lazyblocks div.wp-menu-image.svg::before /*LAZYBLOCKS*/ {
+	content: '\f106' !important;
+}
+
+
+/*hide custom SVG*/
+#adminmenu #toplevel_page_gf_edit_forms div.wp-menu-image.svg,
+#adminmenu #toplevel_page_font-awesome div.wp-menu-image.svg,
+#adminmenu #toplevel_page_duplicator div.wp-menu-image.svg,
+#adminmenu #menu-posts-lazyblocks div.wp-menu-image.svg{
+	background-image:none !important;
+}
+
+
+/*separator*/
+#adminmenu li.wp-menu-separator {
+	height: 0px;
+	padding: 0;
+	margin: 3px 0;
+	cursor: inherit;
+	border-top: 1px solid rgba(0,0,0,0.7);
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/*common properties*/
+#adminmenu #toplevel_page_backwpup div.wp-menu-image::before, /*BACKWPUP*/
+#adminmenu .menu-top div.wp-menu-image::before{
+	display:inline-block;
+	height: 20px;
+	width: 20px;
+	font: normal 20px/1 'dashicons' !important;
+	font-style: normal;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	opacity: 0.4;
+}
