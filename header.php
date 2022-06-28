@@ -25,9 +25,18 @@
 <body <?php body_class(); ?>>
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nova' ); ?></a>
 
+
 	<header id="zone__header" class="zone">
 
-		<?php //get fancy search from NOVA if needed; ?>
+		<?php if ( is_active_sidebar( 'above_page_widgets' ) ) { ?>
+			<section id="section__pageTop" class="wrap-outer bg-light">
+				<div class="wrap-inner container">
+					<?php dynamic_sidebar( 'above_page_widgets' );?>
+				</div>
+			</section>
+		<?php } ?>
+
+		<?php //get fancy search from NOVA3 if needed; ?>
 
 		<!-- ------------ hamburger button ------------ -->
 		<div id="hamburger-button">
@@ -68,5 +77,5 @@
 	</header>
 
 	<!-- ------------ START page content ------------ -->
-	<section id="zone__content" class="zone wrap-outer">
+	<main id="zone__content" class="zone wrap-outer">
 		<div class="wrap-inner container clearfix">

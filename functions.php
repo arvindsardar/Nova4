@@ -108,61 +108,17 @@
 			'name'          => esc_html__( 'Above Page Zone', 'nova' ),
 			'id'            => 'above_page_widgets',
 			'description'   => esc_html__( 'Widgets will appear at the top of the page', 'nova' ),
-			'before_widget' => '<section id="%1$s" class="col-md widget %2$s">',
-			'after_widget'  => '</section>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		) );
 
-		// ABOVE FOOTER ZONE
+		// FOOTER
 		register_sidebar( array(
-			'name'          => esc_html__( 'Above Footer Zone', 'nova' ),
-			'id'            => 'above_footer_widgets',
-			'description'   => esc_html__( 'Widgets will appear above the footer', 'nova' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
-
-		// FOOTER ONE
-		register_sidebar( array(
-			'name'          => esc_html__( 'Footer 1', 'nova' ),
-			'id'            => 'footer1_widgets',
-			'description'   => esc_html__( 'First footer area', 'nova' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
-
-		// FOOTER TWO
-		register_sidebar( array(
-			'name'          => esc_html__( 'Footer 2', 'nova' ),
-			'id'            => 'footer2_widgets',
-			'description'   => esc_html__( 'Second footer area', 'nova' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
-
-		// FOOTER THREE
-		register_sidebar( array(
-			'name'          => esc_html__( 'Footer 3', 'nova' ),
-			'id'            => 'footer3_widgets',
-			'description'   => esc_html__( 'Third footer area', 'nova' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
-
-		// FOOTER FOUR
-		register_sidebar( array(
-			'name'          => esc_html__( 'Footer 4', 'nova' ),
-			'id'            => 'footer4_widgets',
-			'description'   => esc_html__( 'Fourth footer area', 'nova' ),
+			'name'          => esc_html__( 'Footer', 'nova' ),
+			'id'            => 'footer_widgets',
+			'description'   => esc_html__( 'Block-based Footer Area', 'nova' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
