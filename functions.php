@@ -17,10 +17,10 @@
 			add_theme_support( 'automatic-feed-links' );
 
 			// ADD WOOCOMMERCE THEME SUPPORT
-			add_theme_support( 'woocommerce' );
-			add_theme_support( 'wc-product-gallery-zoom' );
-			add_theme_support( 'wc-product-gallery-lightbox' );
-			add_theme_support( 'wc-product-gallery-slider' );
+			// add_theme_support( 'woocommerce' );
+			// add_theme_support( 'wc-product-gallery-zoom' );
+			// add_theme_support( 'wc-product-gallery-lightbox' );
+			// add_theme_support( 'wc-product-gallery-slider' );
 
 
 			// Change markup for HTML5
@@ -37,6 +37,17 @@
 		}
 	endif;
 	add_action( 'after_setup_theme', 'nova_setup' );
+
+
+/* NOTE Register Menus
+--------------------------------------------*/
+	function register_theme_menus () {
+		register_nav_menus( [
+			'primary-menu' => _( 'Primary Menu' ),
+			'mobile-menu' => _( 'Mobile Menu' ),
+		] );
+	}
+	add_action( 'init', 'register_theme_menus' );
 
 
 /* NOTE SET CONTENT WIDTH
@@ -61,12 +72,13 @@
 
 		// styles
 		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_style( 'nova-bs4-grid', get_stylesheet_directory_uri()  . '/vendor/bootstrap-grid.min.css' );
+		wp_enqueue_style( 'nova-bs523', get_stylesheet_directory_uri()  . '/vendor/bootstrap.min.css' );
 		wp_enqueue_style( 'nova-style', get_stylesheet_uri(), array(), MY_THEME_VERSION );
 
 
 		// scripts
-		wp_enqueue_script( 'nova_custom_js', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), '1.0', true );
+		wp_enqueue_script( 'nova_custom', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), '1.0', true );
+		wp_enqueue_script( 'nova-bs523-bundle', get_stylesheet_directory_uri() . '/vendor/bootstrap.bundle.min.js', array('jquery'), '5.2.0', true );
 
 		// slick slider
 		// wp_enqueue_style( 'slick-slider-style', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
@@ -160,14 +172,15 @@ function nova_body_classes( $classes ) {
 
 /* NOTE PERFORMANCE: ASYNC SCRIPTS
 --------------------------------------------*/
-	function defer_parsing_of_js( $url ) {
-		if ( is_user_logged_in() ) return $url; //don't break WP Admin
-		if ( FALSE === strpos( $url, '.js' ) ) return $url;
-		if ( strpos( $url, 'jquery.js' ) ) return $url;
-		return str_replace( ' src', ' defer src', $url );
-	}
-	// add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
-	/* NOTE *
-	 * this is a good thing to defer the script but jquery needs to be excluded
-	 * */
+function defer_parsing_of_js( $url ) {
+	if ( is_user_logged_in() ) return $url; //don't break WP Admin
+	if ( FALSE === strpos( $url, '.js' ) ) return $url;
+	if ( strpos( $url, 'jquery.js' ) ) return $url;
+	return str_replace( ' src', ' defer src', $url );
+}
+// add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
+/* NOTE *
+* this is a good thing to defer the script but jquery needs to be excluded
+* */
+
 

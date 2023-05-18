@@ -35,22 +35,19 @@ get_header();
 						<?php if ( 'post' === get_post_type() ) : ?>
 						<small class="entry-meta">
 							<?php
-							nova_posted_on();
-							nova_posted_by();
+							the_date();
+							the_author();
 							?>
 						</small><!-- .entry-meta -->
 						<?php endif; ?>
 					</header><!-- .entry-header -->
 
-					<?php nova_post_thumbnail(); ?>
+					<?php the_post_thumbnail(); ?>
 
 					<div class="entry-summary">
 						<?php the_excerpt(); ?>
 					</div><!-- .entry-summary -->
 
-					<footer class="entry-footer">
-						<small><?php nova_entry_footer(); ?></small>
-					</footer><!-- .entry-footer -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 				<hr>
 <?php

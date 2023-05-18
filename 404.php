@@ -7,21 +7,19 @@
  * @package nova4
  */
 
-get_header();
-?>
+get_header(); ?>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title">404.<br><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'nova' ); ?></h1>
-				</header><!-- .page-header -->
+<section class="error-404 not-found">
+	<header class="page-header">
+		<h1 class="page-title">404.<br><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'nova' ); ?></h1>
+	</header><!-- .page-header -->
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'nova' ); ?></p>
+	<div class="page-content">
+		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'nova' ); ?></p>
 
-					<?php get_search_form(); ?>
+		<?php get_search_form(); ?>
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+	</div><!-- .page-content -->
+</section><!-- .error-404 -->
 
-<?php
-get_footer();
+<?php get_footer();

@@ -11,9 +11,17 @@
 		});
 
 	//show/hide mobile menu
-		$('#hamburger-button').click(function(){
-			$(this).toggleClass('active');
+		$('#hamburger-button,.offscreen-menu-container a').click(function(){
+			$('#hamburger-button').toggleClass('active');
 			$('body').toggleClass('offscreen-menu-active');
+		});
+
+	// Mobile Menu - add arrow toggle + expand sub-menu
+		$('.offscreen-menu .menu-item-has-children > a').append('<span class="showmore"></span>');
+		$('.offscreen-menu .menu-item-has-children > a .showmore').click(function (event) {
+			event.preventDefault();
+			$(this).parent().next('.sub-menu').slideToggle('slow');
+			$(this).toggleClass('open');
 		});
 
 	//search button toggle
@@ -26,15 +34,6 @@
 		$('.unsearch').click(function(){
 			$('#sitesearch-wrapper').slideToggle();
 		});
-
-	// Mobile Menu - add arrow toggle + expand sub-menu
-		$('.offscreen-menu .menu-item-has-children > a').append('<span class="showmore"></span>');
-		$('.offscreen-menu .menu-item-has-children > a .showmore').click(function (event) {
-			event.preventDefault();
-			$(this).parent().next('.sub-menu').slideToggle('slow');
-			$(this).toggleClass('open');
-		});
-
 
 	}); // end doc ready
 })(jQuery); //end compatibility

@@ -1,24 +1,25 @@
 /*
-Theme Name: Nova4 Master
+Theme Name: [Nova4] Master
 Author: Arvind Sardar
 Description: Base Theme
 License: GPLv2 License
 License URI: https://wordpress.org/about/gpl/
 Tags: scss, bootstrap, isotope, slickslide, git, blocks
 Text Domain: nova
-Version: 1
+Version: 4.5
 */
 
 @import './css/dev.css';
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
 
 /* ==================================== */
-/* ANCHOR Reset */
-/* Original Meyer reset */
+/* ## Reset */
 /* ==================================== */
-	:where(:not(html,iframe,canvas,img,svg,video):not(svg *,symbol *)){all:unset;display:revert}*,::after,::before{box-sizing:border-box}a,button{cursor:revert}menu,ol,ul{list-style:none}img{max-width:100%}table{border-collapse:collapse}textarea{white-space:revert}meter{-webkit-appearance:revert;appearance:revert}::placeholder{color:unset}:where([hidden]){display:none}:where([contenteditable]:not([contenteditable=false])){-moz-user-modify:read-write;-webkit-user-modify:read-write;overflow-wrap:break-word;-webkit-line-break:after-white-space}:where([draggable=true]){-webkit-user-drag:element}
+/* 1. Use a more-intuitive box-sizing model. */ *, *::before, *::after { box-sizing: border-box; } /* 2. Remove default margin */ * { margin: 0; } /* 3. Allow percentage-based heights in the application */ html, body { height: 100%; } /* Typographic tweaks! 4. Add accessible line-height 5. Improve text rendering */ body { line-height: 1.5; -webkit-font-smoothing: antialiased; } /* 6. Improve media defaults */ img, picture, video, canvas, svg { display: block; max-width: 100%; } /* 7. Remove built-in form typography styles */ input, button, textarea, select { font: inherit; } /* 8. Avoid text overflows */ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; } /* 9. Create a root stacking context */ #root, #__next { isolation: isolate; }
+
 
 /* ==================================== */
-/* ANCHOR Setup */
+/* ## Reset Custom */
 /* ==================================== */
 	html {
 		scroll-behavior: smooth;
@@ -40,6 +41,7 @@ Version: 1
 	ul, ol {
 		margin: 0;
 		padding-left: 15px;
+		padding-bottom: 30px;
 	}
 	ul {
 		list-style: disc;
@@ -66,22 +68,27 @@ Version: 1
 		border-bottom: solid 1px var(--gray30);
 	}
 	th{
-		background-color: var(--brand1);
+		background-color: var(--bs-primary);
 		color: white;
 		text-align: left;
 		font-weight: normal;
 	}
 
 /* ==================================== */
-/* ANCHOR Utilities */
+/* ## Utilities */
 /* ==================================== */
 /* CLEARFIX */
 	.clearfix:before,.clearfix:after {content: " ";display: table;}
 	.clearfix:after {clear: both;}
 
-	/* --> desktop view */
+/* HIDERS */
 	@media only screen and (min-width: 992px){
 		.hide-desktop{
+			display: none !important;
+		}
+	}
+	@media only screen and (max-width: 991px){
+		.hide-mobile{
 			display: none !important;
 		}
 	}
@@ -106,20 +113,14 @@ Version: 1
 		text-align: right;
 	}
 
-/* CLEARFIX */
-	.clearfix:before,.clearfix:after {content: " ";display: table;}
-	.clearfix:after {clear: both;}
-
-/* VIDEO */
+/* RESPONSIVE VIDEO */
 	.video-container {
 		position: relative;
 		padding-bottom: 56.25%;
 		padding-top: 30px; height: 0;
 		overflow: hidden;
 	}
-	.video-container iframe,
-	.video-container object,
-	.video-container embed {
+	.video-container :is(iframe,object,embed) {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -127,74 +128,121 @@ Version: 1
 		height: 100%;
 	}
 
-/* Margin Utilities */
+/* SPACING */
 	.mt0{
 		margin-top: 0 !important;
 	}
 	.mb0{
 		margin-bottom: 0 !important;
 	}
+	.spacer-25{height: 25px;}
+	.spacer-50{height: 50px;}
+	.row.gutter-lg {
+		--bs-gutter-x: 80px;
+		--bs-gutter-y: 80px;
+	}
+
+/* Minimal Flexbox */
+	.flexi-parent * {
+		box-sizing: border-box;
+	}
+	.flexi-parent {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -15px;
+	}
+	.flexi-columns {
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	.flexi-center {
+	justify-content: center; /*main-axis centered*/
+	}
+	.flexi-middle {
+	align-items: center; /*secondary-axis centered*/
+	}
+	.flexi-spaced {
+		justify-content: space-between;
+	}
+	.flexi-child {
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-bottom: 30px;
+		width: 100%;
+	}
+	.flexi-parent.one-per-row .flexi-child {
+		max-width: 100%;
+	}
+	.flexi-parent.two-per-row .flexi-child {
+		max-width: 50%;
+	}
+	.flexi-parent.three-per-row .flexi-child {
+		max-width: 33.33%;
+	}
+	.flexi-parent.four-per-row .flexi-child {
+		max-width: 25%;
+	}
+	.flexi-parent.five-per-row .flexi-child {
+		max-width: 20%;
+	}
+	.flexi-parent.six-per-row .flexi-child {
+		max-width: 16.66%;
+	}
 
 /* ==================================== */
-/* ANCHOR Animations */
+/* ## Animations */
 /* ==================================== */
-@keyframes slidedown50 {
-	0%   {top: -50px}
-	100% {top: 0;}
-}
-@keyframes slidedown82 {
-	0%   {top: -50px}
-	100% {top: 32px;}
-}
-@keyframes slideUp10 {
-	0%   {top: 90%}
-	100% {top: 100%;}
-}
-@keyframes fadeIn {
-	0%   {opacity: 0;}
-	100% {opacity: 1;}
-}
+	@keyframes fadeIn {
+		0%   {opacity: 0;}
+		100% {opacity: 1;}
+	}
 
 /* ==================================== */
-/* ANCHOR Colours */
+/* ## Colours */
 /* ==================================== */
+	/* Cheatsheet Palette */
+	.nova-primary{		color:	rgb(23, 70, 255);}
+	.nova-secondary{	color:	rgb(244, 119, 33);}
+	.nova-success{		color: 	rgb(25, 135, 84);}
+	.nova-info{			color:	rgb(13, 202, 240);}
+	.nova-warning{		color:	rgb(255, 193, 7);}
+	.nova-danger{		color:	rgb(220, 53, 69);}
+
 	:root {
-		--brand1: #989388;  /* colour1 */
-		--brand2: #92C83E;  /* colour2 */
-		--brand3: #707070;  /* colour3 */
+		/* bootstrap colours overrides */
+		--bs-primary-rgb: 	23, 70, 255;
+		--bs-secondary-rgb: 244, 119, 33;
+		--bs-success-rgb: 	25, 135, 84;
+		--bs-info-rgb: 		13, 202, 240;
+		--bs-warning-rgb: 	255, 193, 7;
+		--bs-danger-rgb: 	220, 53, 69;
+		--bs-primary: 		rgb(var(--bs-primary-rgb));
+		--bs-secondary: 	rgb(var(--bs-secondary-rgb));
+		--bs-success: 		rgb(var(--bs-success-rgb));
+		--bs-info: 			rgb(var(--bs-info-rgb));
+		--bs-warning: 		rgb(var(--bs-warning-rgb));
+		--bs-danger: 		rgb(var(--bs-danger-rgb));
 
-		--gray5:  #f0f4f5;
-		--gray10: #e8e8e8;
-		--gray20: #cac5c6;
-		--gray30: #afaaab;
-		--gray40: #948f91;
-		--gray50: #7a7677;
-		--gray60: #5e5e5e;
-		--gray70: #474747;
-		--gray80: #303030;
-		--gray90: #1b1b1b;
+		--gray05:  hsl(0, 0%, 95%);
+		--gray10: hsl(0, 0%, 90%);
+		--gray20: hsl(0, 0%, 80%);
+		--gray30: hsl(0, 0%, 70%);
+		--gray40: hsl(0, 0%, 60%);
+		--gray50: hsl(0, 0%, 50%);
+		--gray60: hsl(0, 0%, 40%);
+		--gray70: hsl(0, 0%, 30%);
+		--gray80: hsl(0, 0%, 20%);
+		--gray90: hsl(0, 0%, 10%);
 
 		--light: var(--gray10);
 		--mid: var(--gray50);
 		--dark: var(--gray80);
 	}
 
-	.bg-brand1 {background-color: var(--brand1);}
-	.bg-brand2 {background-color: var(--brand2);}
-	.bg-brand3 {background-color: var(--brand3);}
-	.bg-dark {background-color: var(--dark);}
-	.bg-mid {background-color: var(--mid);}
-	.bg-light {background-color: var(--light);}
 
-	.txt-brand1 {color: var(--brand1);}
-	.txt-brand2 {color: var(--brand2);}
-	.txt-brand3 {color: var(--brand3);}
-	.txt-dark {color: var(--dark);}
-	.txt-mid {color: var(--mid);}
-	.txt-light {color: var(--light);}
 
 /* ==================================== */
-/* ANCHOR Fonts */
+/* ## Fonts */
 /* ==================================== */
 	/* SEE https://google-webfonts-helper.herokuapp.com/fonts */
 	/* montserrat-200 - latin */
@@ -270,7 +318,7 @@ Version: 1
 			url('fonts/montserrat/montserrat-v18-latin-900italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 	}
 
-/* ANCHOR Typography */
+/* ## Typography */
 	html, body {
 		-webkit-font-smoothing: antialiased;
 		-moz-font-smoothing: antialiased;
@@ -316,6 +364,10 @@ Version: 1
 	p{
 		margin-bottom: 12px;
 	}
+	p + h2,
+	p + h3{
+		margin-top: 30px;
+	}
 	big {
 		font-size: 125%;
 	}
@@ -323,11 +375,11 @@ Version: 1
 		font-size: 80%;
 	}
 	a {
-		color: var(--brand2);
+		color: var(--bs-secondary);
 		text-decoration: none;
 	}
 	a:hover{
-		color:var(--brand2);
+		color:var(--bs-primary);
 	}
 
 
@@ -357,7 +409,7 @@ Version: 1
 	}
 
 /* ==================================== */
-/* ANCHOR Buttons */
+/* ## Buttons */
 /* ==================================== */
 	.button,
 	body .wp-block-button__link,
@@ -367,126 +419,192 @@ Version: 1
 		font-size: 16px;
 		font-weight: 600;
 		background-color: white;
-		border: 1px solid var(--brand2);
+		border: 1px solid var(--bs-secondary);
 		text-transform: uppercase;
 		display: inline-block;
 		line-height: 1;
 		padding: 16px 30px;
-		color: var(--brand2);
+		color: var(--bs-secondary);
 		margin-bottom: 5px;
 		cursor: pointer;
 		border-radius: 3px;
 		transition: all 0.3s ease;
 	}
 	.button:hover,
-	body .wp-block-button__link:hover, /* gutenberg button*/
+	body .wp-block-button__link:hover,
 	input[type="button"]:hover,
 	input[type="reset"]:hover,
 	input[type="submit"]:hover {
-		background-color: var(--brand2);
+		background-color: var(--bs-secondary);
 		color: white;
 	}
 	.wire-button .wp-block-button__link,
 	.button.wire-button,
 	.gform_button{
 		background-color: transparent !important;
-		color: var(--brand2) !important;
+		color: var(--bs-secondary) !important;
 	}
 	.wire-button .wp-block-button__link:hover,
 	.button.wire-button:hover,
 	.gform_button:hover{
-		background-color: var(--brand2) !important;
+		background-color: var(--bs-secondary) !important;
 		color: white !important;
 	}
 	.wp-block-button__link:visited{
-		color: var(--brand2);
+		color: var(--bs-secondary);
 	}
 
+/* ## ------------------------------------------- */
+
 /* ==================================== */
-/* ANCHOR ZONE: Header Area */
+/* ## ZONE: Header Area */
 /* ==================================== */
 	#zone__header{
-		background: var(--brand1) url(./images/bg-header.jpg) center/cover;
+		background: var(--bs-primary);
+		padding: 20px 0;
+		position: sticky;
+		top: 0;
+		z-index: 99;
+		transition: all 1s ease;
 	}
-
-	/* --> mobile view */
-	@media only screen and (max-width: 768px){
-		#zone__header{
-			padding: 40px 20px 0;
-		}
+	body.admin-bar #zone__header{
+		top: 32px;
 	}
-
-	#section__brand{
-		padding: 30px 0;
-		background-color: var(--brand1);
+	body.scrolled #zone__header{
+		padding: 5px 0;
 	}
-	#section__brand .wrap-inner{
-		display: flex;
-		align-items: center;
+	#zone__header #section__brand{
+		/* align-self: center !important; */
+	}
+	#zone__header #section__nav{
+		/* align-self: flex-end !important; */
 	}
 	#section__brand .site-logo{
 		font-size: 0;
-		width: 120px;
+		width: 100px;
 		display: block;
 		margin: 0 auto;
-	}
-	#section__nav{
-		/* border-top: 1px solid var(--brand2); */
-		background-color: var(--gray70);
+		transition: all 1s ease;
 	}
 
 /* ==================================== */
-/* ANCHOR ZONE: Navigation */
+/* ## ZONE: Content */
 /* ==================================== */
-	/* -> HORIZONTAL MENU: Top Level */
+	#zone__content{
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+
+/* ==================================== */
+/* ## ZONE: Footer */
+/* ==================================== */
+	#zone__footer{
+		font-size: 14px;
+		background-color: var(--bs-secondary);
+		padding: 40px 0;
+		color: white;
+	}
+
+	#zone__footer h2{
+		font-size: 16px;
+		text-transform: uppercase;
+		margin-bottom: 8px;
+		margin-top: 0;
+	}
+	#zone__footer nav{
+		padding: 15px;
+		background-color: rgba(0, 0, 0, 0.5);;
+	}
+	#zone__footer nav ul{
+		list-style: none;
+	}
+	#zone__footer nav > ul > li{
+		border-top: 3px solid var(--bs-secondary);
+	}
+	#zone__footer nav a{
+		color: #fff;
+		display: block;
+		font-weight: 600;
+		font-size: 16px;
+		padding: 12px 0;
+	}
+	#zone__footer nav ul.sub-menu a{
+		padding: 6px 0;
+	}
+	#zone__footer nav ul ul{
+		padding-left: 15px;
+	}
+	#zone__footer #site-info{
+		padding: 15px;
+		margin-top: 30px;
+		border-top: 1px solid var(--gray20);
+	}
+	#zone__footer #site-info a{
+		display: inline-block;
+		color: white;
+		margin: 0 8px;
+	}
+	a#back-to-top{
+		display: block;
+		position: fixed;
+		bottom: 18px;
+		right: 18px;
+		background-color: black;
+		outline: 1px solid white;
+		color: white;
+		z-index: 100;
+		padding:6px 12px;
+	}
+
+
+/* ## ------------------------------------------- */
+
+/* ==================================== */
+/* ## MODULE: Navigation */
+/* ==================================== */
+	/* PRIMARY MENU */
+	/* -> TOP LEVEL */
 	ul.primary-menu{
 		display: flex;
+		justify-content: flex-end;
 		margin: 0;
-		justify-content: center;
+		padding: 0;
 	}
 	ul.primary-menu > li{
 		position: relative;
 		list-style: none;
-		/* overflow: hidden; */
 	}
 	ul.primary-menu > li > a{
 		padding: 12px;
 		color: white;
 		display: inline-block;
-		transition: all 0.4s ease;
 	}
-	ul.primary-menu > li:hover > a:after{
-		content:'';
-		position:absolute;
-		z-index:1;
-		background-color: var(--brand2);
-		width: 10px;
-		height: 10px;
-		top: 3px;
-		border-radius: 50%;
-		left:0;
-		right:0;
-		margin-left:auto;
-		margin-right:auto;
-		animation-name: fadeIn;
-		animation-duration: 0.8s;
+	ul.primary-menu > li.current-menu-item > a{
+		background-color: hsla(0, 0%, 0%, 0.8);
+		border-radius: 8px;
+	}
+	ul.primary-menu > li.current-menu-item:hover > a{
+		border-radius: 8px 8px 0 0;
 	}
 
-	/* -> HORIZONTAL MENU: Submenus */
+	/* -> SUBMENU */
 	ul.primary-menu li.menu-item-has-children{
 		position: relative;
 	}
 	ul.primary-menu ul.sub-menu{
-		background-color: var(--brand2);
+		background-color: var(--bs-secondary);
 		position: absolute;
 		z-index: 999;
 		text-align: left;
 		padding:0;
-		width: 200px;
+		width: 250px;
 		list-style: none;
 		top: 100%;
 		left: -999em;
 		transition: all 0.4s ease;
+		border-radius: 0 8px 8px 8px;
+		overflow: hidden;
 	}
 	ul.primary-menu > li.menu-item-has-children:hover > ul.sub-menu{
 		animation-name: fadeIn;
@@ -494,41 +612,18 @@ Version: 1
 		left: auto;
 	}
 	ul.primary-menu ul.sub-menu a {
-		width: 250px;
 		padding: 12px;
-		background-color: var(--brand2);
 		color: white;
 		display: block;
+		transition: all 0.4s ease;
 	}
 	ul.primary-menu ul.sub-menu a:hover{
-		background-color: var(--brand1);
+		background-color: hsla(0, 0%, 0%, 0.2);
 	}
 
-/* ==================================== */
-/* ANCHOR MODULE: Sticky Nav */
-/* ==================================== */
-	/* --> desktop view */
-	@media only screen and (min-width: 1025px){
-		body.scrolled #section__nav{
-			animation-name: slidedown50;
-			animation-duration: 1s;
-			position: fixed;
-			width: 100%;
-			left: 0;
-			top: 0;
-			background-color: var(--brand1);
-			z-index: 100;
-			border-bottom: 1px solid var(--brand2);
-		}
-		body.scrolled.admin-bar #section__nav{
-			animation-name: slidedown82;
-			animation-duration: 1s;
-			top: 32px;
-		}
-	}
 
 /* ==================================== */
-/* ANCHOR MODULE: Mobile Nav */
+/* ## MODULE: Hamburger Menu */
 /* ==================================== */
 
 	/* Stop the page the scrolling */
@@ -538,24 +633,18 @@ Version: 1
 	@media only screen and (max-width: 1024px){ ul.primary-menu {display:none;} }
 	nav#id-menu--mobile {display:none;}
 
-
 	/* Hamburger */
 	@media only screen and (min-width: 1025px){#hamburger-button {display: none;}}
-
 
 	#hamburger-button {
 		width: 45px;
 		height: 45px;
 		cursor: pointer;
 		transition: all 0.4s ease;
-		position: fixed;
+		position: relative;
 		z-index: 101;
 		padding: 14px 7px;
-		top: 5px;
-		left: 5px;
-	}
-	body.admin-bar #hamburger-button{
-		top: 37px;
+		margin-left: auto;
 	}
 	body.scrolled #hamburger-button {
 		background-color: #000;
@@ -573,7 +662,7 @@ Version: 1
 		margin-bottom: 4px;
 	}
 	#hamburger-button.active{
-		background-color: var(--brand2);
+		background-color: var(--bs-secondary);
 		border-radius: 50%;
 	}
 	#hamburger-button.active .bar2{
@@ -596,13 +685,13 @@ Version: 1
 		bottom: 0;
 		right: -50%;
 		width: 50%;
-		padding-top: 20px;
+		padding-top: 120px;
 		padding-left: 65px;
-		background-color: #000;
+		background-color: var(--bs-primary);
 		z-index: 12;
 		-webkit-transition: all 1s ease;
 		transition: all 1s ease;
-		overflow-y: scroll;
+		overflow-y: auto;
 	}
 	body.offscreen-menu-active .offscreen-menu-container{
 		right: 0;
@@ -612,7 +701,7 @@ Version: 1
 		padding-left: 0;
 	}
 	ul.offscreen-menu > li{
-		border-bottom: 1px solid var(--brand2);
+		border-bottom: 1px solid var(--bs-secondary);
 		padding: 10px 0;
 	}
 	.offscreen-menu li{
@@ -657,84 +746,14 @@ Version: 1
 	}
 
 /* ==================================== */
-/* ANCHOR ZONE: Content */
-/* ==================================== */
-	#zone__content{
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
-
-
-/* ==================================== */
-/* ANCHOR ZONE: Footer */
-/* ==================================== */
-	#zone__footer{
-		font-size: 14px;
-		background-color: #000;
-		padding: 40px 0;
-		color: white;
-	}
-
-	#zone__footer h2{
-		font-size: 16px;
-		text-transform: uppercase;
-		margin-bottom: 8px;
-		margin-top: 0;
-	}
-	#zone__footer nav{
-		padding: 15px;
-		background-color: rgba(0, 0, 0, 0.5);;
-	}
-	#zone__footer nav ul{
-		list-style: none;
-	}
-	#zone__footer nav > ul > li{
-		border-top: 3px solid var(--brand2);
-	}
-	#zone__footer nav a{
-		color: #fff;
-		display: block;
-		font-weight: 600;
-		font-size: 16px;
-		padding: 12px 0;
-	}
-	#zone__footer nav ul.sub-menu a{
-		padding: 6px 0;
-	}
-	#zone__footer nav ul ul{
-		padding-left: 15px;
-	}
-	#zone__footer #site-info{
-		padding: 15px;
-		margin-top: 30px;
-		border-top: 1px solid var(--gray20);
-	}
-	#zone__footer #site-info a{
-		display: inline-block;
-		color: white;
-		margin: 0 8px;
-	}
-	a#back-to-top{
-		display: block;
-		position: fixed;
-		bottom: 18px;
-		right: 18px;
-		background-color: black;
-		outline: 1px solid white;
-		color: white;
-		z-index: 100;
-		padding:6px 12px;
-	}
-
-/* ==================================== */
-/* ANCHOR MODULE: Uncovering Footer */
+/* ## MODULE: Uncovering Footer */
 /* ==================================== */
 	/* --> desktop view */
 	@media only screen and (min-width: 1025px){
 		#zone__content{
 			position: relative;
 			background-color: #fff;
-			margin-bottom: 215px;
+			margin-bottom: 360px;
 		}
 		#zone__footer{
 			position: fixed;
@@ -745,23 +764,33 @@ Version: 1
 	}
 
 /* ==================================== */
-/* ANCHOR PAGE: Blogs */
+/* ## MODULE: Pagination */
 /* ==================================== */
-	body.blog .post-list .item{
-		margin-bottom: 30px;
-	}
-	body.blog .post-list .item .inner{
-		padding: 0 30px 50px 0;
-		position: relative;
-		height: 100%;
-	}
-	body.blog .post-list .item .inner .post-link{
-		position: absolute;
-		bottom: 0;
-	}
+.pagination{
+	padding: 30px 0;
+	text-align: right;
+}
+.pagination .page-numbers{
+	padding: 10px 16px;
+	border-radius: 4px;
+	border: 1px solid #fff;
+	background-color:#009ddc;
+	color: white;
+}
+.pagination .page-numbers:hover{
+	background-color:#007dca;
+}
+.pagination .page-numbers.current{
+	background-color:transparent;
+	color: #b0b0b0;
+	border-color: #b0b0b0;
+}
+
+
+/* ## ------------------------------------------- */
 
 /* ==================================== */
-/* ANCHOR PAGE: Single Posts */
+/* ## PAGE: Single Posts */
 /* ==================================== */
 	body.single-post header.entry-header{
 		margin-bottom: 60px;
@@ -785,14 +814,31 @@ Version: 1
 		display: flex;
 		justify-content: space-between;
 	}
-	body.single-post .nav-links .previous-post,
-	body.single-post .nav-links .next-post{
+	body.single-post .nav-links :is(.previous-post, .next-post){
 		font-weight: bold;
 		display: block;
 	}
 
+
+
 /* ==================================== */
-/* ANCHOR PAGE: Archives */
+/* ## PAGE: Blogs */
+/* ==================================== */
+	body.blog .post-list .item{
+		margin-bottom: 30px;
+	}
+	body.blog .post-list .item .inner{
+		padding: 0 30px 50px 0;
+		position: relative;
+		height: 100%;
+	}
+	body.blog .post-list .item .inner .post-link{
+		position: absolute;
+		bottom: 0;
+	}
+
+/* ==================================== */
+/* ## PAGE: Archives */
 /* ==================================== */
 	body.archive article.post{
 		margin-bottom: 60px;
@@ -808,42 +854,10 @@ Version: 1
 		margin-bottom: 20px;
 	}
 
-/* ==================================== */
-/* ANCHOR MODULE: Pagination */
-/* ==================================== */
-	.pagination{
-		padding: 30px 0;
-		text-align: right;
-	}
-	.pagination .page-numbers{
-		padding: 10px 16px;
-		border-radius: 4px;
-		border: 1px solid #fff;
-		background-color:#009ddc;
-		color: white;
-	}
-	.pagination .page-numbers:hover{
-		background-color:#007dca;
-	}
-	.pagination .page-numbers.current{
-		background-color:transparent;
-		color: #b0b0b0;
-		border-color: #b0b0b0;
-	}
+/* ## ------------------------------------------- */
 
 /* ==================================== */
-/* ANCHOR MODULE: Cards */
-/* ==================================== */
-	.cards .item-wrap{
-		box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-		border-radius: 10px;
-		padding-bottom: 25px;
-		padding-top: 25px;
-		align-self: s;
-	}
-
-/* ==================================== */
-/* ANCHOR PLUGIN: Woocommerce */
+/* ## OVERRIDES: Woocommerce */
 /* ==================================== */
 	.woocommerce-billing-fields .form-row,
 	.woocommerce-shipping-fields .form-row,
@@ -865,17 +879,17 @@ Version: 1
 	.woocommerce a.button.alt,
 	.woocommerce button.button.alt,
 	.woocommerce input.button.alt {
-		background-color: var(--brand2);
-		border: solid 1px var(--brand2);
+		background-color: var(--bs-secondary);
+		border: solid 1px var(--bs-secondary);
 	}
 	.woocommerce #respond input#submit.alt:hover,
 	.woocommerce a.button.alt:hover,
 	.woocommerce button.button.alt:hover,
 	.woocommerce input.button.alt:hover {
 		background-color: white;
-		color: var(--brand2);
+		color: var(--bs-secondary);
 	}
 
 /* ==================================== */
-/* ANCHOR Overrides  */
+/* ## OVERRIDES: Misc  */
 /* ==================================== */

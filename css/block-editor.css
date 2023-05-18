@@ -2,7 +2,7 @@
 == STYLESHEET FOR THE GUTENBERG BLOCK EDITOR ==
 */
 
-/* @GROUP vars */
+/* ## vars */
 	:root {
 		--brand1: #F69448;	/* colour1 */
 		--brand2: #256899;	/* colour2 */
@@ -25,11 +25,11 @@
 		--dark: var(--gray80);
 
 		--stripey: repeating-linear-gradient( 45deg, #f9f9fb, #f9f9fb 10px, #f0f0f0 10px, #f0f0f0 20px );
-		--checkerboard: repeating-conic-gradient(rgba(255,255,255,0.2) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
+		--checkerboard: repeating-conic-gradient(rgba(231, 231, 231, 0.2) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
 		--outline: 1px dotted var(--gray20);
 	}
 
-/* @GROUP ADMIN BUTTON */
+/* ## ADMIN BUTTON */
 	a.admin-button {
 		text-transform: uppercase;
 		font: bold 9px arial, helvetica, sans-serif;
@@ -50,7 +50,7 @@
 	}
 
 
-/* @GROUP Widths */
+/* ## Widths */
 	.wp-block {
 		max-width: 85%;
 	}
@@ -63,7 +63,7 @@
 		margin-right: auto !important;
 	}
 
-/* @GROUP Font Appearance */
+/* ## Font Appearance */
 	.edit-post-visual-editor.editor-styles-wrapper {
 		font-family: sans-serif;
 	}
@@ -81,52 +81,54 @@
 	}
 
 
-/* @GROUP INDICATOR: Reusable Block */
+/* ## Reusable Block */
 	.is-reusable{
 		position: relative;
-		border: dotted blue 1px;
+		border: dotted #e94726 1px;
 	}
 	.is-reusable:before{
+		border: 1px solid #ac341c;
+		color: #fff;
+		background-color: #e94726;
+		background-image: linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+		box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+		text-shadow: 0 1px 0 rgba(0,0,0,.2);
 		position: absolute;
 		top: -4px;
 		right: -4px;
 		content: 'Reusable Block';
 		text-transform: uppercase;
 		font: bold 9px arial, helvetica, sans-serif;
-		color: #fff;
 		padding: 4px 12px;
-		border: 1px solid #bbb;
-		background-color: #269CE9;
-		background-image: linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
-		border-color: #269CE9;
 		background-clip: padding-box;
 		border-radius: 3px;
-		box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
-		text-shadow: 0 1px 0 rgba(0,0,0,.2);
 		text-decoration: none;
 		z-index: 1;
 	}
 
-/* @GROUP VISIBILITY: Core Columns Block */
+/* ## Core Columns Block */
 	.block-editor-block-list__block.wp-block-column.wp-block-column {
 		border: var(--outline);
 		padding-left: 10px;
 		padding-top: 10px;
 	}
 
-/* @GROUP APPEARANCE: Core HTML Block */
-	.wp-block-html textarea{
-		background-color: #222;
+/* ## Core HTML Block */
+	div[aria-label="Block: Custom HTML"] textarea.block-editor-plain-text{
+		background-color: #222 !important;
 		color: white !important;
 	}
 
-/* @GROUP VISIBILITY: Core New Block Appender */
+/* ## Core New Block Appender */
 	.block-list-appender.wp-block {
-		outline: var(--outline);
-		background: var(--gray10);
+		outline: dotted 1px rgba(0, 0, 0, .4);
+		background: rgba(0, 0, 0, .1);
+	}
+	.block-list-appender.wp-block .block-editor-button-block-appender {
+		box-shadow: none;
 	}
 
-/* @GROUP VISIBILITY: Paragraph Blocks */
+/* ## Paragraph Blocks */
 	.block-editor-block-list__layout > p.wp-block-paragraph::before,
 	p[aria-label="Empty block; start writing or type forward slash to choose a block"]:before{
 		content: '';
@@ -140,10 +142,9 @@
 	}
 
 
-/* @GROUP VISIBILITY: Block Containers */
+/* ## Block Containers */
 	/* padding */
-	.wp-block-group__inner-container,
-	.wp-block-wp-bootstrap-blocks-container{
+	.wp-block-group__inner-container{
 		padding: 3px;
 	}
 
@@ -249,6 +250,10 @@
 		position: absolute;
 		top: 5px;
 		right: 5px;
+		bottom: unset;
+		left: unset;
+		width: fit-content;
+		height: fit-content;
 	}
 
 	/* magic block */
@@ -256,7 +261,82 @@
 		background: rgba(255, 255, 255, 0.9);
 	}
 
+/* ## APPEARANCE: ACF Custom Fields : bottom */
+	#editor .postbox-container{
+		width: 90%;
+		max-width: 950px;
+		margin: 0 auto;
+		padding: 25px 0 35px !important;
+		float: none;
+	}
+	#editor .acf-postbox{
+		background-color: #ddd;
+		margin-bottom: 10px;
+		border: 4px solid white;
+	}
+	#editor .acf-postbox .postbox-header{
+		color: #fff;
+		background-color: #004be3;
+	}
+	#editor .acf-postbox.postbox  > .postbox-header:hover {
+		background-color: #3f7eff;
+	}
 
+/* ## APPEARANCE: ACF Custom Fields : side */
+	.edit-post-meta-boxes-area.is-side .postbox {
+		border-bottom: 1px solid #e0e0e0;
+		background-color: #d7dde3;
+	}
+	#editor .edit-post-meta-boxes-area.is-side .postbox-container {
+		width: 100%;
+		padding: 0 !important;
+	}
+	.edit-post-meta-boxes-area.is-side #poststuff h2.hndle{
+		font-weight: 500;
+		color: #fff;
+	}
+	.block-editor .edit-post-sidebar .acf-postbox > .postbox-header{
+		background-color: #1c3a77;
+	}
+	.edit-post-meta-boxes-area.is-side .inside.acf-fields{
+		width: 95%;
+	}
 
-
-
+/* ## APPEARANCE: ACF-Gutenberg Layout Blocks */
+	.acf-block-body .acf-field .acf-label {
+		margin: 0;
+	}
+	.acf-block-component .acf-block-fields{
+		background-color: transparent;
+		border: solid 6px #cde2ec;
+	}
+	.wp-block[data-title*="Module"] .acf-field-message.lzb-content-title{
+		background: var(--stripey);
+		margin-bottom: 0;
+	}
+	.acf-smart-module{
+		background: var(--stripey);
+		text-align: center;
+	}
+	.acf-smart-module ul{
+		text-align: left;
+	}
+	.acf-smart-module .acf-input {
+		width: 300px;
+		margin: 0 auto;
+	}
+	.acf-smart-module .acf-label{
+		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 500;
+		color: #9ec5d8;
+		padding: 20px 0;
+		text-shadow: 1px 0 0 rgba(255,255,255,0.8);
+	}
+	.acf-smart-module .acf-label:after{
+		content: "SMART MODULE";
+		text-transform: uppercase;
+		font-size: 12px;
+		font-weight: 400;
+		display: block;
+	}

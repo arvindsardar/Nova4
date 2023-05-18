@@ -26,7 +26,7 @@
 	</div><!-- .container.wrap-inner -->
 </footer><!-- #zone_footer.wrap-outer -->
 
-<a id="back-to-top" href="#header-content-wrap"><span class="dashicons dashicons-arrow-up-alt"></span></a>
+<a id="back-to-top" href="#pagetop"><span class="dashicons dashicons-arrow-up-alt"></span></a>
 
 <?php wp_footer(); ?>
 
